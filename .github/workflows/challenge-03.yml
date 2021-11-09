@@ -11,16 +11,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2.4.0
-      - name: check path
-        run: pwd
-      - name: list
-        run: ls -lah
       - name: run python
         run: python ./hello.py
         
   checkout-and-create-artifact:
     runs-on: ubuntu-latest
+    needs: checkout-and-run-python
     steps:
       - name: Checkout
         uses: actions/checkout@v2.4.0
-        
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: ${{ env.my-artifact }}
+          path: ./hello.py
+ 
