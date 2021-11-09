@@ -11,6 +11,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2.4.0
+      - name: check path
+        run: pwd
+      - name: list
+        run: ls -lah
       - name: run python
         run: python ./hello.py
         
