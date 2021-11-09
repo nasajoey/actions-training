@@ -1,1 +1,23 @@
+name: CI-CD Challenge
 
+on: push
+env: 
+  ARTIFACT_NAME: my-artifact
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  checkout-and-run-python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+        
+      - name: run python
+        run: python hello.py
+        
+  checkout-and-create-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+        
